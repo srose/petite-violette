@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petite Violette - Bäckerei & Café</title>
+    <style>
+        :root {
+            --primary-color: #6a4c93;
+            --secondary-color: #8a6fb7;
+            --accent-color: #f1e3f3;
+            --text-color: #333;
+            --light-text: #666;
+            --white: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .hero {
+            background-color: var(--accent-color);
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: 400px;
+            background-color: #ddd;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .product-grid, .supplier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card, .supplier-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover, .supplier-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image, .supplier-image {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-info, .supplier-info {
+            padding: 1.5rem;
+        }
+
+        .product-name, .supplier-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-description, .supplier-description {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+
+        .cafe-section {
+            background-color: var(--accent-color);
+        }
+
+        .cafe-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .cafe-image {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cafe-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .opening-hours {
+            margin-top: 2rem;
+        }
+
+        .opening-hours h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:last-child {
+            border-bottom: none;
+        }
+
+        table td {
+            padding: 0.5rem 0;
+        }
+
+        .day {
+            font-weight: 600;
+        }
+
+        .contact-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .contact-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            background-color: #333;
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .cafe-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Petite Violette</div>
+            <div class="tagline">Bäckerei & Café - Frische Backwaren und regionale Produkte</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#products">Produkte</a></li>
+            <li><a href="#suppliers">Lieferanten</a></li>
+            <li><a href="#cafe">Café</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Willkommen bei Petite Violette</h2>
+            <p>Entdecken Sie handwerkliche Backkunst und regionale Spezialitäten in unserem gemütlichen Café in Wiesbaden.</p>
+            <div class="hero-image">
+                <img src="/api/placeholder/800/400" alt="Petite Violette Bäckerei & Café" />
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Über uns</h2>
+            <p>Petite Violette ist eine kleine, mit Liebe geführte Bäckerei und Café in Wiesbaden. Wir legen Wert auf handwerkliche Tradition, hochwertige Zutaten und nachhaltige Produktion. Bei uns finden Sie täglich frische Backwaren aus ausgewählten Zutaten sowie regionale Produkte von lokalen Lieferanten.</p>
+            <p>Unsere Philosophie: Qualität, Regionalität und Nachhaltigkeit stehen bei uns an erster Stelle. Wir arbeiten eng mit lokalen Produzenten zusammen, um Ihnen das Beste aus der Region zu bieten.</p>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">Unsere Produkte</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/200" alt="Frisches Brot" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Handwerkliche Brote</h3>
+                        <p class="product-description">Knusprige Kruste, saftiger Kern - unsere Brote werden täglich frisch gebacken.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/200" alt="Feine Gebäcke" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Feine Gebäcke</h3>
+                        <p class="product-description">Von Croissants bis Plunderteilchen - süße Versuchungen für jeden Geschmack.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/200" alt="Regionale Milchprodukte" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Milchprodukte</h3>
+                        <p class="product-description">Frische Milch und Butter von der Domäne Mechtildshausen.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/200" alt="Regionaler Honig" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Regionaler Honig</h3>
+                        <p class="product-description">Süße Köstlichkeit von lokalen Imkereien aus der Umgebung.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="suppliers">
+        <div class="container">
+            <h2 class="section-title">Unsere Lieferanten</h2>
+            <div class="supplier-grid">
+                <div class="supplier-card">
+                    <div class="supplier-image">
+                        <img src="/api/placeholder/300/200" alt="Der Köstner" />
+                    </div>
+                    <div class="supplier-info">
+                        <h3 class="supplier-name">Der Köstner</h3>
+                        <p class="supplier-description">Unser Partner für hochwertige Backwaren - Tradition trifft auf Innovation.</p>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-image">
+                        <img src="/api/placeholder/300/200" alt="Domäne Mechtildshausen" />
+                    </div>
+                    <div class="supplier-info">
+                        <h3 class="supplier-name">Domäne Mechtildshausen</h3>
+                        <p class="supplier-description">Biologisch produzierte Milchprodukte aus artgerechter Tierhaltung.</p>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-image">
+                        <img src="/api/placeholder/300/200" alt="Wiesbadener Wochenmarkt" />
+                    </div>
+                    <div class="supplier-info">
+                        <h3 class="supplier-name">Wiesbadener Wochenmarkt</h3>
+                        <p class="supplier-description">Frisches Obst und Gemüse direkt von regionalen Erzeugern.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cafe" class="cafe-section">
+        <div class="container">
+            <h2 class="section-title">Unser Café</h2>
+            <div class="cafe-container">
+                <div class="cafe-image">
+                    <img src="/api/placeholder/500/400" alt="Café-Bereich" />
+                </div>
+                <div class="cafe-info">
+                    <h3>Genießen Sie bei uns vor Ort</h3>
+                    <p>In unserem gemütlichen Café-Bereich können Sie unsere frischen Backwaren und Kaffeespezialitäten in angenehmer Atmosphäre genießen. Bei schönem Wetter laden wir Sie herzlich ein, auf unserer Terrasse Platz zu nehmen.</p>
+                    <p>Wir servieren täglich wechselnde Kuchen, herzhafte Snacks und natürlich unsere beliebten Kaffeespezialitäten.</p>
+                    
+                    <div class="opening-hours">
+                        <h4>Unsere Öffnungszeiten</h4>
+                        <table>
+                            <tr>
+                                <td class="day">Montag - Freitag:</td>
+                                <td>07:00 - 18:00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td class="day">Samstag:</td>
+                                <td>08:00 - 16:00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td class="day">Sonntag:</td>
+                                <td>09:00 - 13:00 Uhr</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Adresse</h4>
+                    <p>Petite Violette Bäckerei & Café<br>
+                    Musterstraße 123<br>
+                    65183 Wiesbaden</p>
+                </div>
+                <div class="contact-card">
+                    <h4>Kontakt</h4>
+                    <p>Telefon: 0611 / 123 456 789<br>
+                    E-Mail: info@petite-violette.com</p>
+                </div>
+                <div class="contact-card">
+                    <h4>Folgen Sie uns</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/petite.violette.baeckerei.cafe" class="social-link" target="_blank">IG</a>
+                        <a href="#" class="social-link" target="_blank">FB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Petite Violette Bäckerei & Café | Alle Rechte vorbehalten</p>
+            <p>Impressum | Datenschutz</p>
+        </div>
+    </footer>
+</body>
+</html>
